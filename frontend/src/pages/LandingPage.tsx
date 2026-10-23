@@ -176,7 +176,7 @@ function Hero() {
             fontFamily: "'Cinzel', 'Times New Roman', serif",
           }}>
             ToriOS attends your Google Meet and Zoom meetings, transcribes
-            every word, and sends AI-generated summaries directly to all participants.
+            every word, saves audio and video recordings, and sends AI-generated summaries directly to all participants.
           </p>
 
           {/* CTAs */}
@@ -210,7 +210,7 @@ function Hero() {
 
           {/* Feature pills */}
           <div style={{ display: 'flex', justifyContent: 'center', gap: 24, flexWrap: 'wrap' }}>
-            {['Google Meet', 'Zoom', 'Auto-Transcription', 'Email Summaries'].map((item) => (
+            {['Google Meet', 'Zoom', 'Auto-Transcription', 'Save Audio & Video', 'Email Summaries'].map((item) => (
               <div key={item} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <CheckCircle size={14} color={CU.green} />
                 <span style={{ fontSize: 13, color: 'rgba(255,255,255,0.50)', fontWeight: 500 }}>{item}</span>
@@ -229,9 +229,9 @@ function Features() {
     { icon: Calendar, title: 'Connect your calendar', desc: 'Link Google Calendar or Outlook. ToriOS identifies upcoming meetings and joins automatically.' },
     { icon: Video, title: 'Bot joins the call', desc: 'ToriOS joins your Google Meet or Zoom as a silent participant. No downloads needed.' },
     { icon: FileText, title: 'Live transcription', desc: 'Every word captured and transcribed in real-time using Whisper AI with speaker detection.' },
+    { icon: Video, title: 'Save audio & video', desc: 'ToriOS automatically records and saves meeting audio and video after Google Meet/Zoom calls, just like Fireflies.ai, so you can replay them anytime.' },
     { icon: Brain, title: 'AI insight generation', desc: 'Gemini AI produces executive summaries, decisions, action items, and key points.' },
     { icon: Mail, title: 'Summary emailed instantly', desc: 'When the meeting ends, all participants receive a clean, structured summary email.' },
-    { icon: Search, title: 'Searchable forever', desc: 'Every meeting becomes part of your searchable knowledge base. Find any decision, ever.' },
   ];
 
   return (
@@ -305,9 +305,9 @@ function Features() {
 function HowItWorks() {
   const steps = [
     { num: '01', title: 'Schedule a bot', desc: 'Paste your Google Meet or Zoom link. ToriOS will join automatically at the scheduled time.' },
-    { num: '02', title: 'Bot attends live', desc: 'ToriOS joins as a silent participant, records the audio, and begins real-time transcription.' },
+    { num: '02', title: 'Bot attends live', desc: 'ToriOS joins as a silent participant, records the audio and video, and begins real-time transcription.' },
     { num: '03', title: 'AI analysis', desc: 'Our Gemini-powered pipeline extracts summaries, key decisions, action items, and open questions.' },
-    { num: '04', title: 'Email to all', desc: 'A clean, formatted summary is emailed to the organizer and all participants automatically.' },
+    { num: '04', title: 'Save & share', desc: 'Audio/video recordings are saved securely, and a clean, formatted summary is emailed to the organizer and all participants automatically.' },
   ];
 
   return (
