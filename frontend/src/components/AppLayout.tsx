@@ -7,15 +7,14 @@ import {
 import { useAuth } from '../contexts/AuthContext';
 import { useToast } from '../contexts/ToastContext';
 
-/* Exact Columbia palette */
 const CU = {
-  navyHeader: '#000D74',
-  navyDeep:   '#000A5E',
-  green:      '#0038A8',
-  greenDark:  '#002D8A',
-  gold:       '#B9D9EB',
-  blue:       '#0038A8',
-  blueLight:  '#B9D9EB',
+  navyHeader: '#FFFFFF',
+  navyDeep:   '#F7F9FA',
+  green:      '#176B87',
+  greenDark:  '#10576F',
+  gold:       '#D7EAF0',
+  blue:       '#176B87',
+  blueLight:  '#D7EAF0',
 };
 
 const NAV_ITEMS = [
@@ -51,7 +50,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
     : user?.email?.[0]?.toUpperCase() ?? 'U';
 
   return (
-    <div style={{ display: 'flex', height: '100vh', background: '#F5F5F5', overflow: 'hidden' }}>
+    <div style={{ display: 'flex', height: '100vh', background: '#FFFFFF', overflow: 'hidden' }}>
       {/* ── Desktop Sidebar ─────────────────────────────────────── */}
       <aside
         style={{
@@ -60,7 +59,8 @@ export default function AppLayout({ children }: AppLayoutProps) {
           display: 'flex',
           flexDirection: 'column',
           flexShrink: 0,
-          borderRight: '1px solid rgba(255,255,255,0.06)',
+          borderRight: '1px solid #E2E7EA',
+          boxShadow: '2px 0 12px rgba(23,43,77,0.03)',
           zIndex: 50,
         }}
         className="hidden-mobile"
@@ -80,7 +80,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
         <div
           style={{
             position: 'fixed', inset: 0, zIndex: 100,
-            background: 'rgba(20,30,51,0.6)',
+            background: 'rgba(23,43,77,0.32)',
           }}
           onClick={() => setMobileOpen(false)}
         />
@@ -131,7 +131,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
             padding: '0 16px',
             height: 56,
             background: CU.navyHeader,
-            borderBottom: '1px solid rgba(255,255,255,0.08)',
+            borderBottom: '1px solid #E2E7EA',
             flexShrink: 0,
             zIndex: 40,
           }}
@@ -139,12 +139,12 @@ export default function AppLayout({ children }: AppLayoutProps) {
         >
           <button
             onClick={() => setMobileOpen(true)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#fff', display: 'flex' }}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#172B4D', display: 'flex' }}
           >
             <Menu size={22} />
           </button>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <img src="/torios-logo-white.png" alt="ToriOS" style={{ height: 32, width: 'auto' }} />
+            <img src="/logo.png" alt="ToriOS" style={{ height: 34, width: 'auto', mixBlendMode: 'multiply' }} />
           </div>
           <Link
             to="/meetings/new"
@@ -192,32 +192,22 @@ interface SidebarContentProps {
 function SidebarContent({ navItems, location, user, initials, onLogout, onNavigate }: SidebarContentProps) {
   return (
     <>
-      {/* Gold accent bar at top */}
-      <div style={{ height: 4, background: CU.gold, flexShrink: 0 }} />
-
       {/* Logo */}
-      <div style={{ padding: '20px 20px 14px' }}>
+      <div style={{ padding: '20px 20px 18px', borderBottom: '1px solid #E2E7EA' }}>
         <Link
           to="/dashboard"
           onClick={onNavigate}
           style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
         >
           <img
-            src="/torios-logo-white.png"
+            src="/logo.png"
             alt="ToriOS"
-            style={{ height: 40, width: 'auto' }}
-            onError={(e) => {
-              const el = e.currentTarget as HTMLImageElement;
-              el.style.display = 'none';
-            }}
+            style={{ height: 44, width: 'auto', mixBlendMode: 'multiply' }}
           />
         </Link>
-        <p style={{ fontSize: 9, color: 'rgba(255,255,255,0.30)', marginTop: 4, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-          Your AI Assistant, Everywhere
-        </p>
       </div>
 
-      {/* New Meeting CTA — Green like Columbia nav */}
+      {/* New Meeting action */}
       <div style={{ padding: '0 16px 14px' }}>
         <Link
           to="/meetings/new"
@@ -247,7 +237,7 @@ function SidebarContent({ navItems, location, user, initials, onLogout, onNaviga
       </div>
 
       {/* Divider */}
-      <div style={{ height: 1, background: 'rgba(255,255,255,0.08)', margin: '0 16px 10px' }} />
+      <div style={{ height: 1, background: '#E2E7EA', margin: '0 16px 10px' }} />
 
       {/* Nav items */}
       <nav style={{ flex: 1, padding: '0 12px' }}>
@@ -264,8 +254,8 @@ function SidebarContent({ navItems, location, user, initials, onLogout, onNaviga
                 marginBottom: 2,
                 fontSize: 13,
                 fontWeight: isActive ? 700 : 500,
-                color: isActive ? '#fff' : 'rgba(255,255,255,0.50)',
-                background: isActive ? 'rgba(255,255,255,0.08)' : 'transparent',
+                color: isActive ? '#176B87' : '#596579',
+                background: isActive ? '#EAF3F5' : 'transparent',
                 borderLeft: isActive ? `3px solid ${CU.green}` : '3px solid transparent',
                 textDecoration: 'none',
                 transition: 'all 120ms ease',
@@ -273,14 +263,14 @@ function SidebarContent({ navItems, location, user, initials, onLogout, onNaviga
               }}
               onMouseEnter={(e) => {
                 if (!isActive) {
-                  (e.currentTarget as HTMLElement).style.background = 'rgba(255,255,255,0.04)';
-                  (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.85)';
+                  (e.currentTarget as HTMLElement).style.background = '#F2F6F7';
+                  (e.currentTarget as HTMLElement).style.color = '#172B4D';
                 }
               }}
               onMouseLeave={(e) => {
                 if (!isActive) {
                   (e.currentTarget as HTMLElement).style.background = 'transparent';
-                  (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.50)';
+                  (e.currentTarget as HTMLElement).style.color = '#596579';
                 }
               }}
             >
@@ -297,7 +287,7 @@ function SidebarContent({ navItems, location, user, initials, onLogout, onNaviga
       {/* User section */}
       <div style={{
         padding: '14px 16px 20px',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
+        borderTop: '1px solid #E2E7EA',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
           <div style={{
@@ -310,10 +300,10 @@ function SidebarContent({ navItems, location, user, initials, onLogout, onNaviga
             {initials}
           </div>
           <div style={{ minWidth: 0 }}>
-            <div style={{ fontSize: 13, fontWeight: 600, color: '#fff', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            <div style={{ fontSize: 13, fontWeight: 600, color: '#172B4D', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {user?.full_name || 'User'}
             </div>
-            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.35)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+            <div style={{ fontSize: 11, color: '#748094', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
               {user?.email}
             </div>
           </div>
@@ -323,7 +313,7 @@ function SidebarContent({ navItems, location, user, initials, onLogout, onNaviga
           style={{
             display: 'flex', alignItems: 'center', gap: 8,
             width: '100%', background: 'none', border: 'none',
-            color: 'rgba(255,255,255,0.35)',
+            color: '#596579',
             fontSize: 12, fontWeight: 500, cursor: 'pointer',
             padding: '8px 12px',
             transition: 'all 120ms ease',
@@ -332,11 +322,11 @@ function SidebarContent({ navItems, location, user, initials, onLogout, onNaviga
           }}
           onMouseEnter={(e) => {
             (e.currentTarget as HTMLElement).style.background = 'rgba(198,40,40,0.15)';
-            (e.currentTarget as HTMLElement).style.color = '#FCA5A5';
+            (e.currentTarget as HTMLElement).style.color = '#B42318';
           }}
           onMouseLeave={(e) => {
             (e.currentTarget as HTMLElement).style.background = 'none';
-            (e.currentTarget as HTMLElement).style.color = 'rgba(255,255,255,0.35)';
+            (e.currentTarget as HTMLElement).style.color = '#596579';
           }}
         >
           <LogOut size={14} />
